@@ -18,10 +18,16 @@ origin	https://github.com/Refoss/refoss-homeassistant.git
   - your EM06 responses with some data ...
   - append result from search.py in config.py
 
-3. change log path in config.py log_path
+3. test get_power.py
+  - shoud return powerdata from your EM06 nodes
+    0 {'stamp': '2025-04-13 12:33:11', 'name': 'OG', 'CH': 1, 'A': 0.0, 'V': 229.46, 'W': 0.0, 'kWh': 0.76, 'fa': 0}
+    ....
+    ....
+
+4. change log path in config.py log_path
   log_path = "/var/www/html/pow-log/refoss_"
 
-4. add cronjob like every 10minute
+5. add cronjob like every 10minute
     */10    *    *   *   *    python3 /root/refoss/get_power.py
 
 
