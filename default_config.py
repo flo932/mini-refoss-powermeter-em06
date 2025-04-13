@@ -3,11 +3,9 @@
 # node and Network confi
 # please change 
 
-log_path = "/var/www/html/pow-log/refoss_"
-
-
-
+braodcast_ip = "192.168.20.255"
 nodes = []
+log_path = "/var/www/html/pow-log/refoss_"
 
 #EM06 node 1
 uuid = "241xxxxxxx204740701c4e7xxxxxxxx"
