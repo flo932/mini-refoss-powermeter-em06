@@ -24,14 +24,16 @@ ip = "192.168.20.81"
 4. change log path in config.py log_path
 log_path = "/var/www/html/pow-log/refoss_"
 
-apendix
+
+
+apendix / option
 - Network
 
-block dns port for refoss powermeter EM06 on the local dns-lxc-container
+#block dns port for refoss powermeter EM06 on the local dns-lxc-container
 iptables -A INPUT -i eth0 -s 192.168.20.81 -j DROP -m comment --comment "block-dns refoss powermeter"
 iptables -A INPUT -i eth0 -s 192.168.20.82 -j DROP -m comment --comment "block-dns refoss powermeter"
 
 
-- crontab
+#- crontab
  */10    *    *   *   *    python3 /root/refoss/get_power.py
 ```
