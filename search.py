@@ -152,7 +152,9 @@ print("end")
 print()
 
 print("# append in your config.py ")
-for node in nodes:
+for i,node in enumerate(nodes):
+    j = i+1
+    node["name"] = f"floor{j}"
     print("_node =",node)
     print("nodes.append(_node)")
     print()

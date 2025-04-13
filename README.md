@@ -17,6 +17,9 @@ origin	https://github.com/Refoss/refoss-homeassistant.git
 2. execute >> python3 search.py
   - your EM06 responses with some data ...
   - append result from search.py in config.py
+     # append in your config.py 
+     _node = {'ip': '192.168.20.xx', 'uuid': 'xxxxxxxxxxxxxxx', 'name': 'floor1'}
+     nodes.append(_node)
 
 3. test get_power.py
   - shoud return powerdata from your EM06 nodes
