@@ -76,8 +76,18 @@ def request(ip,dd_id,mode="info"):
     x=requests.post(url, json=data)
     print("="*20)
     print(x.text)
+    node = None
+    if 1:#try:
+        jdata=json.loads(x.text)
+        node = {"ip":ip,"uuid":"","name":"floor1"}
+        if jdata["header"]["uuid"]:
+            node["uuid"] = jdata["header"]["uuid"]
+        print("node:",node)
+    #except Exception as e:
+    #    print("err",e)
     print("="*20)
     print()
+    return node
 
 
 def socket_init() -> socket.socket:
@@ -86,6 +96,8 @@ def socket_init() -> socket.socket:
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
     #sock.bind(("", 9989))
     return sock
+
+nodes = []
 
 def server():
     PORT = 9988
@@ -101,12 +113,13 @@ def server():
         #data, addr = sock.recv(10) #from(10)
         data, addr = sock.recvfrom(1024)
         print(f"received message: {data}")
-        
         try:
             jdata = json.loads(data)
             ip  = addr[0]
             dd_id = jdata["uuid"]
-            request(ip,dd_id,mode="info")
+            node = request(ip,dd_id,mode="info")
+            if node:
+                nodes.append(node)
         except Exception as e:
             print("err",e)
 
@@ -136,3 +149,10 @@ time.sleep(2)
 print("sleep...")
 time.sleep(1)
 print("end")
+print()
+
+print("# append in your config.py ")
+for node in nodes:
+    print("_node =",node)
+    print("nodes.append(_node)")
+    print()
