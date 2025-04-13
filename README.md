@@ -9,7 +9,7 @@ origin	https://github.com/Refoss/refoss-homeassistant.git
 
 0. copy default_config.py to config.py
 
-1.chang broadcast ip in config.py
+1.change broadcast ip in config.py
   braodcast_ip = "192.168.20.255"
   to your LAN broadcast ip
   braodcast_ip = "192.168.1.255"
